@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import Article from "./Article"
-import Navbar from "./Navbar"
+import Navbar from "../components/Navbar"
 // import { Link } from "react-router-dom"
 
 export default function GetImages() {
@@ -23,7 +23,7 @@ export default function GetImages() {
     <>
     <Navbar />
       <div className="container mx-auto px-5 2xl:px-0">
-        <h1 className="text-slate-800 font-bold text-6xl my-10">
+        <h1 className="text-slate-800 font-bold text-4xl my-10">
           Recommended For You
         </h1>
 

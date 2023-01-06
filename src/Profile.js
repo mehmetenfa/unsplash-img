@@ -8,7 +8,7 @@ export default function Profile() {
   useEffect(() => {
     const fetchPerson = async () => {
       const response = await fetch(
-        `https://api.unsplash.com/users/${username}?client_id=MymZhv89rGBK1SCzB4F7O02ZkZW3Muzj_IsI4gmyplc`
+        `https://api.unsplash.com/photos/?client_id=MymZhv89rGBK1SCzB4F7O02ZkZW3Muzj_IsI4gmyplc`
       )
       const data = await response.json()
       setPerson(data)
