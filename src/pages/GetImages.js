@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar"
 
 export default function GetImages() {
   const [images, setImages] = useState([])
+  const [mylist, setMylist] = useState()
 
   useEffect(() => {
     const fetchImages = async () => {
@@ -18,6 +19,13 @@ export default function GetImages() {
 
     fetchImages()
   }, [])
+
+  
+
+  const handleClick = (newItem) => {
+    setMylist({...mylist,newItem})
+  }
+  console.log(mylist);
 
   return (
     <>
@@ -34,7 +42,7 @@ export default function GetImages() {
         ) : (
           <section className="grid xl:grid-cols-4 pb-0 gap-3 lg:container">
             {images.map((image) => (
-              <Article key={image.id} {...image} />
+              <Article handleClick={handleClick} key={image.id} {...image} />
             ))}
           </section>
         )}

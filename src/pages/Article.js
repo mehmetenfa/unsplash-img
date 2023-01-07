@@ -1,6 +1,9 @@
 import { AiOutlinePlus, AiOutlineArrowDown } from "react-icons/ai";
 
-export default function Article({ id, urls, links, user, likes }) {
+export default function Article({ id, urls, links, user, likes, handleClick }) {
+
+  const newListElement = {id, urls, links, user, likes}
+
   return (
     <>
       <div className="p-3 rounded-3xl shadow-md bg-white">
@@ -13,7 +16,7 @@ export default function Article({ id, urls, links, user, likes }) {
 
           <div className="p-5 pb-0 flex flex-col md:flex-row items-start md:items-center justify-between">
             <div className="flex items-center justify-start gap-3">
-              <button className="border border-slate-400 p-2 text-2xl rounded-full cursor-pointer">
+              <button onClick={() => handleClick(newListElement)} className="border border-slate-400 p-2 text-2xl rounded-full cursor-pointer">
                 <AiOutlinePlus />
               </button>
               <a
