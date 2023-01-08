@@ -27,6 +27,10 @@ export default function GetImages({
     fetchImages();
   }, []);
 
+  const handleDelete = ({ id }) => {
+    setImages(newListElement.filter((images) => images.id !== id))
+  }
+
   return (
     <>
       <Navbar />
@@ -41,7 +45,7 @@ export default function GetImages({
               <div className="p-5 pb-0 flex flex-col md:flex-row items-start md:items-center justify-between">
                 <div className="flex items-center justify-start gap-3">
                   <button
-                    onClick={() => handleClick(newListElement)}
+                    onClick={() => handleDelete(images)}
                     className="border border-slate-400 p-2 text-2xl rounded-full cursor-pointer"
                   >
                     <AiFillDelete />

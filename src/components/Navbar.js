@@ -3,6 +3,9 @@ import { AiOutlineUnorderedList, AiOutlinePlus } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
+
+  
+
   return (
     <div>
       <div className="flex justify-between items-center w-screen h-[5rem] p-6 bg-slate-800 text-amber-50">
