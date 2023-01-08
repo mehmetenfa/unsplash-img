@@ -1,9 +1,17 @@
 import { useState, useEffect } from "react";
-import Article from "./Article";
 import Navbar from "../components/Navbar";
+import { AiFillDelete, AiOutlineArrowDown } from "react-icons/ai";
 // import { Link } from "react-router-dom"
 
-export default function GetImages() {
+export default function GetImages({
+  id,
+  urls,
+  links,
+  user,
+  likes,
+  handleClick,
+}) {
+  const newListElement = { id, urls, links, user, likes };
   const [images, setImages] = useState([]);
 
   useEffect(() => {
@@ -25,48 +33,38 @@ export default function GetImages() {
       <div className="container mx-auto px-5 2xl:px-0">
         <h1 className="text-slate-800 font-bold text-4xl my-10">My List</h1>
 
-        {!images ? (
-          <div>
-            <h1>Loading...</h1>
-          </div>
-        ) : (
-          <section className="grid xl:grid-cols-4 pb-0 gap-3 lg:container">
-            <div className="p-3 rounded-3xl shadow-md bg-white">
-              <article key={id} className="rounded-3xl">
-                <img
-                  src={urls.regular}
-                  alt={user.username}
-                  className="h-52 object-fit object-cover w-full lg:h-80 rounded-3xl"
-                />
+        <section className="grid xl:grid-cols-4 pb-0 gap-3 lg:container">
+          <div className="p-3 rounded-3xl shadow-md bg-white">
+            <article key={id} className="rounded-3xl">
+              <img className="h-52 object-fit object-cover w-full lg:h-80 rounded-3xl" />
 
-                <div className="p-5 pb-0 flex flex-col md:flex-row items-start md:items-center justify-between">
-                  <div className="flex items-center justify-start gap-3">
-                    <button
-                      onClick={() => handleClick(newListElement)}
-                      className="border border-slate-400 p-2 text-2xl rounded-full cursor-pointer"
-                    >
-                      <AiOutlinePlus />
-                    </button>
-                    <a
-                      href={`${links?.download}?dl=`}
-                      download
-                      target="_blank"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                      }}
-                      className="border border-slate-400 p-2 text-2xl rounded-full cursor-pointer"
-                    >
-                      <AiOutlineArrowDown />
-                    </a>
-                    <small className="text-slate-800 opacity-75 block ml-4">
-                      {likes} Likes
-                    </small>
-                  </div>
+              <div className="p-5 pb-0 flex flex-col md:flex-row items-start md:items-center justify-between">
+                <div className="flex items-center justify-start gap-3">
+                  <button
+                    onClick={() => handleClick(newListElement)}
+                    className="border border-slate-400 p-2 text-2xl rounded-full cursor-pointer"
+                  >
+                    <AiFillDelete />
+                  </button>
+                  <a
+                    href={`${links?.download}?dl=`}
+                    download
+                    target="_blank"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                    }}
+                    className="border border-slate-400 p-2 text-2xl rounded-full cursor-pointer"
+                  >
+                    <AiOutlineArrowDown />
+                  </a>
+                  <small className="text-slate-800 opacity-75 block ml-4">
+                    {likes} Likes
+                  </small>
                 </div>
-              </article>
-            </div>
-          </section>
-        )}
+              </div>
+            </article>
+          </div>
+        </section>
       </div>
     </>
   );
